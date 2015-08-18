@@ -27,3 +27,23 @@ void TicTacToe::setup() {
         }
     }
 }
+
+void TicTacToe::your_turn() {
+    int position, quotient, remainder;
+
+    cout << "\nIt's your turn.\n";
+    cout << "Enter the position to place 'X': ";
+
+    cin >> position;
+
+    position--;
+    quotient = position / 3;
+    remainder = position % 3;
+
+    if (board[quotient][remainder] == ' ') {
+        board[quotient][remainder] = 'X';
+    } else {
+        cout << "Invalid position.\n";
+        your_turn();
+    }
+}
