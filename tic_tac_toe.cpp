@@ -114,3 +114,41 @@ void TicTacToe::computer_turn() {
         }
     }
 }
+
+string TicTacToe::check_for_winner() {
+    for (int i = 0; i < 3; i++) {
+        if ((board[i][0] == 'X' && board[i][1] == 'X' && board[i][2] == 'X') ||
+            (board[0][i] == 'X' && board[1][i] == 'X' && board[2][i] == 'X') ||
+            (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') ||
+            (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')) {
+            show_board();
+            cout << "\nYou won, congrats!\n";
+            return "game_won";
+        }
+        if ((board[i][0] == 'O' && board[i][1] == 'O' && board[i][2] == 'O') ||
+            (board[0][i] == 'O' && board[1][i] == 'O' && board[2][i] == 'O') ||
+            (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') ||
+            (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')) {
+            show_board();
+            cout << "\nComputer won, better luck next time.\n";
+            return "game_won";
+        }
+    }
+
+    int count = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i][j] != ' ') {
+                count++;
+            }
+        }
+    }
+
+    if (count == 9) {
+        return "game_draw";
+    } else {
+        return "game_in_progress";
+    }
+}
+
+
