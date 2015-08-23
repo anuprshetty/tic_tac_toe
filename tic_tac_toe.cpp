@@ -151,4 +151,27 @@ string TicTacToe::check_for_winner() {
     }
 }
 
+void TicTacToe::show_board() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i][j] != ' ') {
+                board_helper[i][j] = ' ';
+            }
+        }
+    }
+
+    cout << "---------------------------------\n";
+    for (int i = 0; i < 3; i++) {
+        cout << " " << board[i][0] << " | " << board[i][1] << " | "
+             << board[i][2] << " "
+             << "           "
+             << " " << board_helper[i][0] << " | " << board_helper[i][1]
+             << " | " << board_helper[i][2] << " ";
+        if (i != 2) {
+            cout << "\n___________           ___________\n";
+        }
+    }
+    cout << "\n_________________________________";
+    cout << endl;
+}
 
