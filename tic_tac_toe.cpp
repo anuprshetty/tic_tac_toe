@@ -175,3 +175,44 @@ void TicTacToe::show_board() {
     cout << endl;
 }
 
+int main() {
+    cout << "\n###################################" << endl;
+    cout << "### Welcome To Tic-Tac-Toe Game ###" << endl;
+    cout << "###################################\n" << endl;
+
+    TicTacToe tic_tac_toe;
+
+    tic_tac_toe.setup();
+
+    string game_state;
+    for (int i = 1; i <= 9; i++) {
+        tic_tac_toe.show_board();
+        tic_tac_toe.your_turn();
+        game_state = tic_tac_toe.check_for_winner();
+
+        if (game_state == "game_won") {
+            break;
+        } else if (game_state == "game_draw") {
+            tic_tac_toe.show_board();
+            cout << "\nDraw game.\n";
+            break;
+        } else {
+            tic_tac_toe.show_board();
+            tic_tac_toe.computer_turn();
+            game_state = tic_tac_toe.check_for_winner();
+
+            if (game_state == "game_won") {
+                break;
+            } else if (game_state == "game_draw") {
+                tic_tac_toe.show_board();
+
+                cout << "\nDraw game.\n";
+                break;
+            } else {
+                continue;
+            }
+        }
+    }
+
+    return 0;
+}
