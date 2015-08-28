@@ -7,7 +7,7 @@ class TicTacToe {
 
    public:
     void setup();
-    void your_turn();
+    void player_turn();
     void computer_turn();
     string check_for_winner();
     void show_board();
@@ -28,7 +28,7 @@ void TicTacToe::setup() {
     }
 }
 
-void TicTacToe::your_turn() {
+void TicTacToe::player_turn() {
     int position, quotient, remainder;
 
     cout << "\nIt's your turn.\n";
@@ -44,7 +44,7 @@ void TicTacToe::your_turn() {
         board[quotient][remainder] = 'X';
     } else {
         cout << "Invalid position.\n";
-        your_turn();
+        player_turn();
     }
 }
 
@@ -187,7 +187,7 @@ int main() {
     string game_state;
     for (int i = 1; i <= 9; i++) {
         tic_tac_toe.show_board();
-        tic_tac_toe.your_turn();
+        tic_tac_toe.player_turn();
         game_state = tic_tac_toe.check_for_winner();
 
         if (game_state == "game_won") {
